@@ -1,7 +1,5 @@
 'use strict';
 
-// import logo from "./assets/img/logo.PNG";
-
 const e = React.createElement;
 
 class ChecklistItem extends React.Component {
@@ -121,7 +119,7 @@ class Checklist extends React.Component {
 
         var createItemText = this.state.creatingItem ? "bi bi-x-circle" : "bi bi-plus-circle"
         return (
-            <div className="col">
+            <div className="col p-2 m-2 border border-1 rounded">
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>{this.state.title}</h1>
                     <i role="button" onClick={() => this.props.delete(this.props.id)} className="bi bi-trash"></i>
@@ -204,74 +202,27 @@ class ChecklistsWrapper extends React.Component {
     render() {
         return (
             <div>
-                <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style={{ "width": "280px" }}>
-                    <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                        <img className="mx-auto my-5 d-block" src={"./assets/img/logo.png"} height="100px" alt="Logo" />
-                    </a>
-                    <hr />
-                    <ul className="nav nav-pills flex-column mb-auto">
-                        <li className="nav-item">
-                            <a href="#" className="nav-link active" aria-current="page">
-                                <i className="bi me-2"></i>
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="nav-link text-white">
-                                <i className="bi me-2"></i>
-                                Dashboard
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="nav-link text-white">
-                                <i className="bi me-2"></i>
-                                Orders
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="nav-link text-white">
-                                <i className="bi me-2"></i>
-                                Products
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className="nav-link text-white">
-                                <i className="bi me-2"></i>
-                                Customers
-                            </a>
-                        </li>
-                    </ul>
-                    <hr />
-                    <div className="dropdown">
-                        <a href="#" className="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://github.com/mdo.png" alt="" className="rounded-circle me-2" width="32" height="32" />
-                            <strong>mdo</strong>
-                        </a>
-                        <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                            <li><a className="dropdown-item" href="#">New project...</a></li>
-                            <li><a className="dropdown-item" href="#">Settings</a></li>
-                            <li><a className="dropdown-item" href="#">Profile</a></li>
-                            {/* <li><hr className="dropdown-divider"></li> */}
-                            <li><a className="dropdown-item" href="#">Sign out</a></li>
-                        </ul>
-                    </div>
+                <div className="sidenav text-center d-flex align-items-center justify-content-center">
+                    <p className="display-4">OpenLists</p>
                 </div>
-                <div className="container">
-                    <img className="mx-auto my-5 d-block" src={"./assets/img/logo.png"} height="100px" alt="Logo" />
-                    <div className="title d-flex align-items-center justify-content-end">
+
+                <div className="main p-5">
+                    <div className="d-flex justify-content-end">
                         {/* <p className="display-1"><strong>OpenLists</strong></p> */}
                         <button className="btn btn-outline-primary" onClick={this.createList}>New list</button>
                     </div>
-                    <div style={{ height: "80vh" }} className="d-flex align-items-center">
-                        <div className="container">
-                            <div className="row row-cols-2 justify-content-md-center gx-5">
-                                {
-                                    this.state.checklists.map(x => x)
-                                }
-                                {
-                                    this.state.checklists.length == 0 ? <p className="lead text-center">No Checklists<br />Click on "New list"</p> : null
-                                }
-                            </div>
+                    <div className="container">
+                        <div className="row row-cols-3 justify-content-md-center">
+                            {
+                                this.state.checklists.map(x => x)
+                            }
+                        {
+                            this.state.checklists.length == 0 ? (
+                                <div className="d-flex align-items-center justify-content-center" style={{height:"80vh"}}>
+                                    <p className="lead text-center">No Checklists<br />Click on "New list"</p>
+                                </div>
+                            ) : null
+                        }
                         </div>
                     </div>
                 </div>
